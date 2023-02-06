@@ -1,8 +1,13 @@
-version: '3.4'
+version: "3.9"
 
 services:
-  todoapi:
-    image: ${DOCKER_REGISTRY-}todoapi
-    build:
-      context: .
-      dockerfile: toDoApi/Dockerfile
+  postgres:
+    image: postgres
+    volumes:
+    - ./database:/var/lib/postgresql/data
+    ports:
+    - 5432:5432
+    environment:
+      - POSTGRES_DB=portfolio
+      - POSTGRES_USER=developer
+      - POSTGRES_PASSWORD=secret

@@ -53,13 +53,8 @@ namespace toDoApi.Controllers
         // PUT: api/ToDo/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutToDo(int id, ToDo toDo)
+        public async Task<IActionResult> PutToDo(Guid id, ToDo toDo)
         {
-            if (id != toDo.Id)
-            {
-                return BadRequest();
-            }
-
             _context.Entry(toDo).State = EntityState.Modified;
 
             try
@@ -116,7 +111,7 @@ namespace toDoApi.Controllers
             return NoContent();
         }
 
-        private bool ToDoExists(int id)
+        private bool ToDoExists(Guid id)
         {
             return (_context.ToDos?.Any(e => e.Id == id)).GetValueOrDefault();
         }

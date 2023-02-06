@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<ToDoContext>(opt => opt.UseInMemoryDatabase("todoList"));
+builder.Services.AddDbContext<ToDoContext>(opt => opt.UseNpgsql("ToDo"));
 
 var app = builder.Build();
 
